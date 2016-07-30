@@ -1,5 +1,7 @@
 
-![Angular](http://www.acodemics.com/wp-content/uploads/2014/11/angularjs21.jpg)
+![Angular](https://angularjs.org/img/AngularJS-large.png)
+
+# AngularJS Iniciando
 
 Curso AngularJS Iniciando do [School of Net](https://www.schoolofnet.com/courses/angularjs-iniciando)
 
