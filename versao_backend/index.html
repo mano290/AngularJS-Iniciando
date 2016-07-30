@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-br" ng-app="myPizza">
+<head>
+    <meta charset="UTF-8">
+    <title>Angular</title>
+    <link rel="stylesheet" href="lib/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<section class="container" ng-controller="myPizzaCtrl">
+    <div class="row">
+        <h1 ng-bind="name" class="text-center"></h1>
+    </div>
+    <br>
+    <div class="row">
+        <div class="form-inline text-center">
+            <div class="form-group pull-left">
+                <input type="search" ng-model="search" class="form-control" placeholder="Search client">
+            </div>
+            <form name="formClient" class="pull-right">
+                <div ng-class="{'has-error' : formClient.nameClient.$invalid && formClient.nameClient.$dirty, 'has-success' : formClient.nameClient.$valid, 'form-group': true}">
+                    <input type="text" ng-model="client.name" name="nameClient" ng-required="true" class="form-control" placeholder="Name">
+                </div>
+                <div ng-class="{'has-error' : formClient.telClient.$invalid && formClient.telClient.$dirty, 'has-success' : formClient.telClient.$valid, 'form-group': true}">
+                    <input type="tel" ng-model="client.tel" name="telClient" ng-required="true" class="form-control" placeholder="Telephone" ng-pattern="/^\d{4,5}-\d{4}$/">
+                </div>
+                <div ng-class="{'has-error' : formClient.addressClient.$invalid && formClient.addressClient.$dirty, 'has-success' : formClient.addressClient.$valid, 'form-group': true}">
+                    <input type="text" ng-model="client.address" name="addressClient" ng-required="true" class="form-control" placeholder="Address">
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-success" ng-click="addClient(client)" ng-if="!editing" ng-disabled="formClient.$invalid">Add</button>
+                    <button class="btn btn-info" ng-click="saveClient(client)" ng-if="editing" ng-disabled="formClient.$invalid">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="row">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th ng-click="orderTable('name')" style="cursor: pointer">Name</th>
+                <th ng-click="orderTable('tel')" style="cursor: pointer">Tel</th>
+                <th ng-click="orderTable('address')" style="cursor: pointer">Address</th>
+                <th>Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="client in clients | filter:search | orderBy: column : order">
+                <td>{{ client.name }}</td>
+                <td>{{ client.tel }}</td>
+                <td>{{ client.address }}</td>
+                <td>
+                    <button class="btn btn-default" ng-click="editClient(client)">Edit</button>
+                    <button class="btn btn-danger" ng-click="destroyClient(client)">Delete</button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</section>
+<footer ng-include="'view/footer.html'"></footer>
+<script src="lib/angular/angular.min.js"></script>
+<script src="js/app.js"></script>
+<script src="js/controllers/myPizzaCtrl.js"></script>
+</body>
+</html>
