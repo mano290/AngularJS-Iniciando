@@ -1,5 +1,5 @@
 # AngularJS-Iniciando
-Curso AngularJS Iniciando do [School of Net](https://www.schoolofnet.com/)
+Curso AngularJS Iniciando do [School of Net](https://www.schoolofnet.com/courses/angularjs-iniciando)
 
 Duas versões
 
